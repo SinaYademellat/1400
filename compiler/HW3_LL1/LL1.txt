@@ -1,0 +1,6 @@
+		num			id			+			-			*			/			$
+E		E->TD$		E->TD$		Error		Error		Error		Error		Error
+D		Error		Error		D->+TD$		D->-TD$		Error		Error		D->nil
+T		T->FH		T->FH		Error		Error		Error		Error		Error
+H		Error		Error		H->nil		H->nil		H->*FH		H->/FH		H->nil
+F		F->num		F->id		Error		Error		Error		Error		Error
