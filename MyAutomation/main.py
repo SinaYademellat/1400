@@ -1,4 +1,129 @@
+##############################
+#                            #
+#       sina yademellat      #
+#                            #
+#        input2pdfd          #
+#             :)             #                                               
+##############################
+
+
+from tkinter import * 
+
+
+root = Tk()
+root.configure(background='#E5CCFF')
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+frame = Frame(root,bg='#E5CCFF')
+
+my_font1=('times', 14)
+
+sina=['T-801','T-802','T-803','T-804','T-805','OC']  
+rowinput= ["TANK", "CAPECITY", " LEVEL ", "TON", ' SOLID% ','VISCOZITYSEC','GETTHMS','SPG','SOLY.H2O','APPERA']
+
+def set_lebel(R,C):
+    for i in range(0,len(R)):
+        tmp_bg=''
+        if (i%2==0):
+            tmp_bg ='white'
+        else:
+            tmp_bg='#CCFFFF'
+        L=Label(frame, borderwidth=1, bg=tmp_bg , font=my_font1,relief='solid',text=R[i])#.place(x=6,y=7)
+        L.grid(row=0,column=i , sticky='ew' )
+
+    for i in range(0,len(C)):
+        if (i%2!=0):
+            tmp_bg ='white'
+        else:
+            tmp_bg='#CCFFFF'#magenta
+        L=Label(frame, borderwidth=1, bg=tmp_bg , font=my_font1,relief='solid',text=C[i])
+        L.grid(row=i+1,column=0,sticky='ew')
+X=[]
+
+def set_Entry():
+    tmp_bg ='white'
+    for i in range(1,7):
+        for j in range ( 1, 10):
+            # if (i%2==0 or j%2==0):
+            #     tmp_bg ='white'
+            # else:
+            #     tmp_bg='cyan'#magenta            
+            #len(rowinput[1])
+            b = Entry(frame, borderwidth=0.5,relief='solid',widt=15 , bg='white' ,font=('Helvetica', 13),text="")
+            b.grid(row=i, column=j,sticky='ew')
+            X.append(b)
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+frameBu= Frame(root,bg='red')
+
+
+
+
+data = [
+    ["TANK", "CAPECITY", "LEVEL", "TON", 'SOLID%','VISCOZITYSEC','GETTHMS','SPG','SOLY.H2O','APPERA'],
+    ["T-801","48", "1111 ", "2222", '3333','4444','5555','6666','7777','8888'],
+    ["T-802","48", " ", "", '','','','','',''],
+    ["T-803","50", " ", "", '','','','','',''],
+    ["T-804","15", " ", "", '','','','','',''],
+    ["OC"  ,"ok" , " ", "", '','','','','',''],
+]
+
+
+
 from fpdf import FPDF
+
+pdf = FPDF()
+pdf.add_page()
+pdf.set_font("Times", size=10)
+
+def foo():
+    r=1
+    j=1
+    s=1
+    for i in range(0,len(X)):
+        # if(X[i].get()==""):
+        #           print(f'x[{i}]--> $$',end=' ')
+        # else:
+        #     print(f'x[{i}]--> ',X[i].get(),end=' ')
+        
+        # if(i+1%9==0):
+        #     print('\n')
+       
+
+        tmp_str="$$$$$$$$$$$$"
+        if(X[i].get()==""):
+            tmp_str=""
+        else:
+            tmp_str=X[i].get()
+        
+        print(f"r={r},s={s},tmp_str={tmp_str}")
+        if (r<=5):
+            data[r][s]=tmp_str
+        
+        if(s%9==0):
+            r+=1
+            s=0
+        s+=1
+    
+    print("SINA")
+
+    pdf.image('img/date.png', 180, 0, 22)
+    pdf.image('img/vaschasp.png', 55, 3, 70)
+    create_table(table_data = data,title='    ', cell_width='even')
+    pdf.ln()
+    pdf.image('img/Seconder.png', 50, 80, 22)
+    pdf.image('img/producer2.png', 150, 82, 18)
+
+    pdf.output('Glue.pdf')
+    root.destroy()
+
+Button(frameBu, text="ذخیره",width=50,bg='#CCFFCC',command=foo).grid(row=0, column=0)#CCFFCC
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+########################### PDF ###########################
 
 def create_table(table_data, title='', data_size = 6, title_size=12, align_data='L', align_header='L', cell_width='even', x_start='x_default',emphasize_data=[], emphasize_style=None, emphasize_color=(0,0,0)):
     """
@@ -156,25 +281,14 @@ def create_table(table_data, title='', data_size = 6, title_size=12, align_data=
     pdf.line(x_left,y3,x_right,y3)
 
 
-data = [
-    ["TANK", "CAPECITY", "LEVEL", "TON", 'SOLID%','VISCOZITYSEC','GETTHMS','SPG','SOLY.H2O','APPERA'],
-    ["T-801","48", "1111 ", "2222", '3333','4444','5555','6666','7777','8888'],
-    ["T-802","48", " ", "", '','','','','',''],
-    ["T-803","50", " ", "", '','','','','',''],
-    ["T-804","15", " ", "", '','','','','',''],
-    ["OC"  ,"ok" , " ", "", '','','','','',''],
-]
 
-pdf = FPDF()
-pdf.add_page()
-pdf.set_font("Times", size=10)
+if __name__ =='__main__':
+    
+    root.title("چسب")
+    set_lebel(rowinput,sina)
+    set_Entry()    
 
-pdf.image('img/date.png', 180, 0, 22)
-pdf.image('img/vaschasp.png', 55, 3, 70)
+    frame.pack(expand=True) 
+    frameBu.pack(expand=True)
 
-create_table(table_data = data,title='    ', cell_width='even')
-pdf.ln()
-pdf.image('img/Seconder.png', 50, 80, 22)
-pdf.image('img/producer2.png', 150, 82, 18)
-
-pdf.output('Glue.pdf')
+    mainloop()
