@@ -1,14 +1,13 @@
+
 ##############################
 #                            #
 #       sina yademellat      #
 #                            #
 #        input2pdfd          #
-#             :)             #                                               
+#             :)             #
 ##############################
 
-
 from tkinter import * 
-
 
 root = Tk()
 root.configure(background='#E5CCFF')
@@ -18,8 +17,11 @@ frame = Frame(root,bg='#E5CCFF')
 
 my_font1=('times', 14)
 
-sina=['T-801','T-802','T-803','T-804','T-805','OC']  
-rowinput= ["TANK", "CAPECITY", " LEVEL ", "TON", ' SOLID% ','VISCOZITYSEC','GETTHMS','SPG','SOLY.H2O','APPERA']
+#as col
+sina     =   ['T-801','T-802','T-803','T-804','T-805','OC']  
+
+#as ROW of PDF
+rowinput = ["TANK", "CAPECITY", " LEVEL ", "TON", ' SOLID% ','VISCOZITYSEC','GETTHMS','SPG','SOLY.H2O','APPERA']
 
 def set_lebel(R,C):
     for i in range(0,len(R)):
@@ -55,11 +57,7 @@ def set_Entry():
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
 frameBu= Frame(root,bg='red')
-
-
-
 
 data = [
     ["TANK", "CAPECITY", "LEVEL", "TON", 'SOLID%','VISCOZITYSEC','GETTHMS','SPG','SOLY.H2O','APPERA'],
@@ -69,8 +67,6 @@ data = [
     ["T-804","15", " ", "", '','','','','',''],
     ["OC"  ,"ok" , " ", "", '','','','','',''],
 ]
-
-
 
 from fpdf import FPDF
 
@@ -291,4 +287,4 @@ if __name__ =='__main__':
     frame.pack(expand=True) 
     frameBu.pack(expand=True)
 
-    mainloop()
+    root.mainloop()
