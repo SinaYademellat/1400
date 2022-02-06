@@ -1,0 +1,5 @@
+.vscode
+a.exe
+__pycache__
+*.pdf
+tmp.py

@@ -75,19 +75,18 @@ pdf.add_page()
 pdf.set_font("Times", size=10)
 
 def foo():
+    '''
+        print data[r][s] in console 
+            AND
+        make pdf :)
+            ==>Glue.pdf
+        print(sina yademellat) in console 
+    '''
+
     r=1
     j=1
     s=1
     for i in range(0,len(X)):
-        # if(X[i].get()==""):
-        #           print(f'x[{i}]--> $$',end=' ')
-        # else:
-        #     print(f'x[{i}]--> ',X[i].get(),end=' ')
-        
-        # if(i+1%9==0):
-        #     print('\n')
-       
-
         tmp_str="$$$$$$$$$$$$"
         if(X[i].get()==""):
             tmp_str=""
@@ -103,7 +102,7 @@ def foo():
             s=0
         s+=1
     
-    print("SINA")
+    print("sina yademellat")
 
     pdf.image('img/date.png', 180, 0, 22)
     pdf.image('img/vaschasp.png', 55, 3, 70)
@@ -278,8 +277,7 @@ def create_table(table_data, title='', data_size = 6, title_size=12, align_data=
 
 
 
-if __name__ =='__main__':
-    
+def runandmakeGluepdf():
     root.title("چسب")
     set_lebel(rowinput,sina)
     set_Entry()    
@@ -288,3 +286,6 @@ if __name__ =='__main__':
     frameBu.pack(expand=True)
 
     root.mainloop()
+
+
+# if __name__ =='__main__':
