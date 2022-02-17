@@ -18,10 +18,15 @@ frame = Frame(root,bg='#E5CCFF')
 my_font1=('times', 14)
 
 #as col
-sina     =   ['T-801','T-802','T-803','T-804','T-805','OC']  
+sina     =   ['T-801','T-802','T-803','T-804','T-805','OC']
 
 #as ROW of PDF
 rowinput = ["TANK", "CAPECITY", " LEVEL ", "TON", ' SOLID% ','VISCOZITYSEC','GETTHMS','SPG','SOLY.H2O','APPERA']
+
+def setRowandco(R,C):
+    global sina,rowinput
+    rowinput = R
+    sina = C
 
 def set_lebel(R,C):
     for i in range(0,len(R)):
@@ -61,7 +66,7 @@ frameBu= Frame(root,bg='red')
 
 data = [
     ["TANK", "CAPECITY", "LEVEL", "TON", 'SOLID%','VISCOZITYSEC','GETTHMS','SPG','SOLY.H2O','APPERA'],
-    ["T-801","48", "1111 ", "2222", '3333','4444','5555','6666','7777','8888'],
+    ["T-xx","48", "1111 ", "2222", '3333','4444','5555','6666','7777','8888'],
     ["T-802","48", " ", "", '','','','','',''],
     ["T-803","50", " ", "", '','','','','',''],
     ["T-804","15", " ", "", '','','','','',''],
@@ -74,6 +79,7 @@ pdf = FPDF()
 pdf.add_page()
 pdf.set_font("Times", size=10)
 
+Gnamepdf=''
 def foo():
     '''
         print data[r][s] in console 
@@ -111,7 +117,7 @@ def foo():
     pdf.image('img/Seconder.png', 50, 80, 22)
     pdf.image('img/producer2.png', 150, 82, 18)
 
-    pdf.output('Glue.pdf')
+    pdf.output(Gnamepdf)#'Glue.pdf'
     root.destroy()
 
 Button(frameBu, text="ذخیره",width=50,bg='#CCFFCC',command=foo).grid(row=0, column=0)#CCFFCC
@@ -277,14 +283,14 @@ def create_table(table_data, title='', data_size = 6, title_size=12, align_data=
 
 
 
-def runandmakeGluepdf():
+def runandmakeGluepdf(N):
+    global Gnamepdf
+    Gnamepdf = N
     root.title("چسب")
     set_lebel(rowinput,sina)
     set_Entry()    
-
     frame.pack(expand=True) 
     frameBu.pack(expand=True)
-
     root.mainloop()
 
 
