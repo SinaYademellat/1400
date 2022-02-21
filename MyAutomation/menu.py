@@ -3,7 +3,7 @@
 #       sina yademellat      #
 #                            #
 #         MENU.PY            #
-#                            #                                               
+#                            #
 ##############################
 
 from tkinter import *
@@ -46,11 +46,9 @@ def Fbtn2():
   
 btn1 = Button(frame, width=20,height=3,font=(30),text="چسب", fg="black",bg="#9933FF",activebackground = "red",command=Fbtn1)  
 btn1.pack()  
-
   
 btn2 = Button(frame, width=20,height=3,font=(30),text="راکتور های واحد", fg="black",bg="#9933FF",activebackground = "red",command=Fbtn2)  
 btn2.pack()  
-
 
 if __name__ == '__main__' :
     root.mainloop()

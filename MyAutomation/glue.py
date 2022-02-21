@@ -27,6 +27,10 @@ def setRowandco(R,C):
     global sina,rowinput
     rowinput = R
     sina = C
+    data[0]=R
+    for i in range(1,len(C)):
+        #print("***=>",data[i][0],' ',C[i-1])#=C[i]
+        data[i][0]=C[i-1]
 
 def set_lebel(R,C):
     for i in range(0,len(R)):
@@ -66,7 +70,7 @@ frameBu= Frame(root,bg='red')
 
 data = [
     ["TANK", "CAPECITY", "LEVEL", "TON", 'SOLID%','VISCOZITYSEC','GETTHMS','SPG','SOLY.H2O','APPERA'],
-    ["T-xx","48", "1111 ", "2222", '3333','4444','5555','6666','7777','8888'],
+    ["T-xx","", " ", "2222", '3333','4444','5555','6666','7777','8888'],
     ["T-802","48", " ", "", '','','','','',''],
     ["T-803","50", " ", "", '','','','','',''],
     ["T-804","15", " ", "", '','','','','',''],
@@ -88,7 +92,6 @@ def foo():
             ==>Glue.pdf
         print(sina yademellat) in console 
     '''
-
     r=1
     j=1
     s=1
